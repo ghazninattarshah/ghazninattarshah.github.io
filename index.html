@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.13 (451658)"/><meta name="keywords" content="Architecture"/><meta name="created" content="2015-03-30 09:04:19 +0000"/><meta name="source-url" content="file:///"/><meta name="updated" content="2015-06-23 04:05:37 +0000"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Microservices Architecture</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head><body lang="">
+<section class="page-header">
+  <h1 class="project-name">Microservices Architecture</h1>
+  <h2 class="project-tagline"></h2>
+</section>
+<section class="main-content">
+<div><strong><span style="text-decoration: underline;">Introduction:</span></strong></div>
+<div><strong><span style="text-decoration: underline;"><br clear="none"/></span></strong></div>
+<div>The <strong>microservice architectural style</strong> is an approach to developing a <strong>single application</strong> as a suite of <strong>small services</strong>, each running in its <strong>own process</strong> and <strong>communicating</strong> with <strong>lightweight mechanisms</strong>, often an HTTP resource API. These services are <strong>build around business capabilities</strong> and <strong>independently deployable</strong> by fully automated deployment machinery. There is a bare minumum of centralized management of these services, which may be written in different programming languages and use different data storage technologies.</div>
+<div><br clear="none"/></div>
+<div><img src="images/90B13279-F84D-4B3A-8A53-0266B46DC75B.png" height="136" width="474"/></div>
+<div><span style="text-decoration: underline;"><strong>SOA:</strong></span></div>
+<div><br clear="none"/></div>
+<div>It is SOA, but different implementation approach.</div>
+<div><br clear="none"/></div>
+<div><strong>Classic SOA:</strong></div>
+<div><br clear="none"/></div>
+<div>Integrates different application as a set of services.</div>
+<ul>
+<li>Heavy-weight</li>
+<li>Orchestration</li>
+<li>Intelligent Communication Layer</li>
+<li>ESB</li>
+<li>WS*/SOAP</li>
+<li>License/driven</li>
+</ul>
+<div>Target Problem: Integrate (legacy) software.</div>
+<div><br clear="none"/></div>
+<div><img src="images/D772E4CC-0726-418C-AD0F-86E47B1270A5.png" height="226" width="498"/></div>
+<div><strong>Microservices:</strong></div>
+<div><br clear="none"/></div>
+<div>Architect a single application as set of services.</div>
+<ul>
+<li>Light-weight</li>
+<li>Chreography</li>
+<li>Dump Communication Layer</li>
+<li>HTTP/REST/JSON</li>
+<li>Intelligent services</li>
+</ul>
+<div>Target Problem: Architect new business platform</div>
+<div><br clear="none"/></div>
+<div><img src="images/42E7B18B-700D-4F30-9CE3-BFABB6BD96ED.png" height="286" width="624"/></div>
+<div><span style="text-decoration: underline;"><strong>Types of scaling:</strong></span></div>
+<div><br clear="none"/></div>
+<div><strong>Horizontal</strong></div>
+<div><br clear="none"/></div>
+<div>Monolithic</div>
+<div><br clear="none"/></div>
+<div>More App server instances connected to single database.</div>
+<div><br clear="none"/></div>
+<div><strong>Vertical</strong></div>
+<div><br clear="none"/></div>
+<div>Monolithic</div>
+<div><br clear="none"/></div>
+<div>Increase the computing power of the machine, increase the system hardware configuration.</div>
+<div><br clear="none"/></div>
+<div><strong>Data</strong></div>
+<div><br clear="none"/></div>
+<div>Monolithic</div>
+<div><br clear="none"/></div>
+<div>Similar to Horizontal, but stores the segment of data in different database base instance based on the app server.</div>
+<div><br clear="none"/></div>
+<div><strong>Functional</strong></div>
+<div><br clear="none"/></div>
+<div>Micro-services</div>
+<div><br clear="none"/></div>
+<div>Separate the services as container based with respect to functionality and it may use own database.</div>
+<div><br clear="none"/></div>
+<div><strong>Team</strong></div>
+<div><br clear="none"/></div>
+<div>Micro-services</div>
+<div><br clear="none"/></div>
+<div>Separate team will be responsible for a functionality or a service and made deployment easy as it balances it out with different teams.</div>
+<div><br clear="none"/></div>
+<div><img src="images/D97E8E7A-4A41-4300-9C68-03461C660548.png" height="287" width="611"/></div>
+<div><img src="images/01A1B67E-3531-4186-8DDB-A5FE11976308.png" height="323" width="630"/></div>
+<div><span style="text-decoration: underline;"><strong>Why different from SOA &amp; benifits:</strong></span></div>
+<div><br clear="none"/></div>
+<div><em><strong>Monolith:</strong></em></div>
+<ol>
+<li>Hard to understand and modify.</li>
+<li>Large code base</li>
+<li>Overloaded IDE</li>
+<li>Overloaded Webcontainer</li>
+<li>Development slows down</li>
+<li>Small change-big impact
+<ul>
+<li>Any change requires full rebuild, test and deploy.</li>
+<li>Impact analysis is huge effort, and takes long time.</li>
+<li>Obstacles for frequent changes and deployment.</li>
+</ul>
+</li>
+<li>Big risk of re-write
+<ul>
+<li>No hard module boundaries.
+<ul>
+<li>Quality and modularity breaks down over time, this enforces eventual need for re-write.</li>
+</ul>
+</li>
+<li>Long term commitment to technology stack
+<ul>
+<li>Change or try-out new technology implies re-write.</li>
+</ul>
+</li>
+<li>Re-write = complete re-write
+<ul>
+<li>No partial re-write</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Little resilience to failure
+<ul>
+<li>Failure in monolith brings the app server down.</li>
+</ul>
+</li>
+<li>Scaling can be difficult
+<ul>
+<li>Mostly Horizontal scaling, many load balanced instances.</li>
+<li>Hard to scale to data growth cope with all data.</li>
+<li>Different components have different resource needs.</li>
+<li>Scaling development implies coordination overhead.</li>
+</ul>
+</li>
+</ol>
+<div><em><strong>Microservices:</strong></em></div>
+<div><i><b><br/></b></i></div>
+<ol>
+<li>Simple to develop</li>
+<li>Simple to deploy</li>
+<li>Simple to scale</li>
+<li>Small and focused on 1 capability
+<ul>
+<li>Easier to understand</li>
+<li>IDE and deployment faster for 1 service</li>
+</ul>
+</li>
+<li>Independent
+<ul>
+<li>Release and deployment</li>
+<li>Scaling</li>
+<li>Development</li>
+</ul>
+</li>
+<li>Loosely Coupled
+<ul>
+<li>Through lightweight communication.</li>
+</ul>
+</li>
+<li>Fault Isolation vs bring all down.</li>
+<li>Allows try-out of new technologies.</li>
+<li>Re-write can be limited to 1 service
+<ul>
+<li>Impact analysis stops at boundary</li>
+</ul>
+</li>
+<li>Provide firm module boundaries with explicit interface!
+<ul>
+<li>Less risk on re-write</li>
+<li>Harder to violate boundary in development.</li>
+</ul>
+</li>
+<li>Decentralized choreography
+<ul>
+<li>vs central orchestration.</li>
+<li>vs central point of failure.</li>
+</ul>
+</li>
+<li>Decentralized data
+<ul>
+<li>Poloygot Persistence - Using different database for different services or container.</li>
+</ul>
+</li>
+</ol>
+<div><span style="text-decoration: underline;"><strong>Why evolving architecture:</strong></span></div>
+<div><u><b><br/></b></u></div>
+<ol>
+<li>Key (business) drivers guide architectural decisions.
+<ul>
+<li>Micro-services are organized around business capabilities.</li>
+</ul>
+</li>
+<li>Postpone decisions to Last Responsible Moment.
+<ul>
+<li>Micro-services allow delay of scaling and technological decisions.</li>
+</ul>
+</li>
+<li>Architect and develop for Evolvability
+<ul>
+<li>Micro-services support evolution in technology, scaling, and features.</li>
+</ul>
+</li>
+</ol>
+<div><br/></div>
+<div><span style="text-decoration: underline;"><strong>Functional decomposition of business domain</strong></span></div>
+<div><br clear="none"/></div>
+<div>
+<ul>
+<li>Functional decomposition is more important to design a corret microservices.</li>
+<li>It is always safer to start with a functionally well decomposed monolith and evolve it to a microservices architecture when the need arises.</li>
+<li>Refactoring the initial functional decomposition will be easier in a monolith
+<ul>
+<li>rewriting failure scenario's</li>
+<li>decentralised data</li>
+<li>service contract redesign.</li>
+</ul>
+</ul>
+</div>
+<div><img src="images/6E8F8296-540F-4119-BD1F-B5614484A4C9.png" height="240" width="624"/></div>
+<div><em><br clear="none"/></em></div>
+<div>
+<div><span style="text-decoration: underline;"><em>Incorrect functional decompositions:</em></span></div>
+<div><br clear="none"/></div>
+<div>This leads to Leads to higher coupling between services, and most of the microservices architectural benifits are lost</div>
+<ol>
+<li>Harder to functionally scale the application.
+<ul>
+<li>Error will propagate through multiple services</li>
+<li>Graceful degradation will be harder to achieve</li>
+</ul>
+</li>
+<li>Team development overhead
+<ul>
+<li>T-scaling becomes harder.</li>
+</ul>
+</li>
+<li>Large communicational overhead between services.</li>
+<li>Large overhead in releasing/deploying business features.</li>
+<li>Refactoring to correct decomposition is costly.</li>
+</ol>
+</div>
+<div><em>Domain driven design:</em></div>
+<div><br clear="none"/></div>
+<div>Tackling complexity by abstracting the business domain concepts and logic into a domain model and using this as a base for software development.</div>
+<div><br clear="none"/></div>
+<div><em>Bounded contexts:</em></div>
+<div><br clear="none"/></div>
+<div>Domain driven design deals with large complex models by dividing them into different <strong>functionally bounded</strong> sub-domains and explicitly describing the interrelations between these sub-domains.</div>
+<div><br clear="none"/></div>
+<div>Ex:</div>
+<div><br clear="none"/></div>
+<div>Functional decomposition</div>
+<div><img src="images/76D7FCEE-C773-4002-9C56-B9118BDF3088.png" height="230" width="380"/></div>
+<div><br clear="none"/></div>
+<div>Bounded Contexts</div>
+<div><img src="images/AD17FA64-C302-4AD3-AA15-DEFF940E1E4E.png" height="281" width="561"/></div>
+<div><br clear="none"/></div>
+<div>Apply Services to bounded contexts</div>
+<div><img src="images/50DD8C12-2122-4FA7-91EE-FADFCEAEBB81.png" height="279" width="560"/></div>
+<div><img src="images/D9FAE258-5C63-4058-BDBC-DE278263BC42.png" height="321" width="595"/></div>
+<div><span style="text-decoration: underline;"><em><br clear="none"/></em></span></div>
+<div><em><span style="text-decoration: underline;"><br clear="none"/></span></em></div>
+<div><span style="text-decoration: underline;"><strong>Challenges &amp; Communication:</strong></span></div>
+<div><span style="text-decoration: underline;"><strong><br clear="none"/></strong></span></div>
+<div>
+<ol>
+<li>Operational Challenge
+<ul>
+<li>Complex Runtime: many moving parts
+<ul>
+<li>Keep releases and deployments manageable.
+<ul>
+<li>Requires high level of automation is needed.</li>
+</ul>
+</li>
+<li>Service monitoring is required.</li>
+<li>Configuration management becomes more complex.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Distributed Development
+<ul>
+<li>Services are deployed on multiple instances
+<ul>
+<li>Testing effort becomes greater</li>
+</ul>
+</li>
+<li style="display:inline;list-style:none;">
+<ul>
+<li>Distributed architectural properties to consider.
+<ul>
+<li>Communication between services</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>handling failures of components.</li>
+</ul>
+</li>
+<li style="display:inline;list-style:none;">
+<ul>
+<li>decentralized data
+<ul>
+<li>Each service has its own database - loose coupling.</li>
+<li>Might even be another database technology.</li>
+<li>Data duplication between services might be required to ensure loose coupling.</li>
+</ul>
+</li>
+<li>When implementing <span style="text-decoration: underline;">use cases spanning multiple services</span>:
+<ul>
+<li><strong>Distributed transactions</strong>
+<ul>
+<li>data is always consistent</li>
+<li>reduces system availability, tightly coupled services.</li>
+<li>has fallen out of favor in modern stacks (REST, NoSQL)</li>
+</ul>
+</li>
+<li><strong>Eventual consistency</strong>
+<ul>
+<li>Use a message broker to publish use cases to other services
+<ul>
+<li>decouples producers and consumers (services) of events.</li>
+<li>Improves availability.</li>
+</ul>
+</li>
+<li>Trade off between availability and data consistency
+<ul>
+<li>application needs to be able to handle eventually consistent data.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Network properties</strong>
+<ul>
+<li>Synchronized HTTP-based
+<ul>
+<li>easy</li>
+<li>firewall friendly, works across the Internet</li>
+<li>doesn't support publisher-subscriber patterns</li>
+<li>client and server must both be available simultaneously.</li>
+<li>client needs to know host and port of server</li>
+</ul>
+</li>
+<li>Asynchronous non-blocking
+<ul>
+<li>Client doesn't block calling thread (allows for parallelism)</li>
+<li>client and server still must be available simultaneously</li>
+<li>client needs to know host and port of server</li>
+</ul>
+</li>
+<li>Asynchronous Messaging
+<ul>
+<li>Through broker...
+<ul>
+<li>decouples message producers from consumers</li>
+<li>broker can buffer messages</li>
+<li>supports a variety of communication patterns</li>
+</ul>
+</li>
+<li>broker is another moving part (adds complexity)</li>
+<li>request-reply communication patters is not a natural fit.</li>
+</ul>
+</li>
+<li>Handling failures
+<ul>
+<li>Services can fail at any moment.</li>
+<li>Design services to handle these kind of failures.</li>
+<li style="text-align: left;">Fallback message  queue.</li>
+<li style="text-align: left;"><img src="images/D6E55947-B1D9-4A9D-9E7B-DBAF29D98E0C.png" height="165" width="540"/></li>
+</ul>
+</li>
+<li style="display:inline;list-style:none;">
+<ul>
+<li>Pre-service thread pools.</li>
+<li><img src="images/93461FC5-5996-481A-97BC-E4335AE6F842.png" height="134" width="570"/></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Minimizing Communicational overhead
+<ul>
+<li>Communication between services is reduced.
+<ul>
+<li>when functional decomposition is done right.</li>
+<li>when service size isn't too small.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li style="display:inline;list-style:none;">
+<ul>
+<li>Executing service calls in parallel reduces impact of <strong>communication overhead</strong></li>
+<li>Reduce unneeded network usage by using <strong>circuit breakers</strong>
+<ul>
+<li>Wrap a protected function in a circuit breaker</li>
+<li>Monitor protected function for failures.</li>
+<li>The circuit breaks when a predefined threshold of fails is reached</li>
+<li>All future calls to the function go to fallback until the circuit is restored.</li>
+<li><img src="images/449A5072-344B-4A5D-9DA1-5673A75500ED.png" height="175" width="571"/></li>
+</ul>
+</li>
+<li><strong><span style="font-weight: normal;">Reduce communication between clients and services with an </span><strong>API gateway</strong></strong></li>
+</ul>
+</li>
+</ol>
+<div><img src="images/ED7CE496-75F3-4A23-90A7-10949EDA0588.png" height="240" width="523"/></div>
+<div>Using API gateway, the services can be routed.</div>
+<div><img src="images/6931B570-ED96-457B-BAA4-88DF85602BA4.png" height="170" width="388"/></div>
+<div><br clear="none"/></div>
+<div><br clear="none"/></div>
+<div><strong><span style="text-decoration: underline;">Microservices Implementation stack:</span></strong></div>
+<div><strong><span style="text-decoration: underline;"><br clear="none"/></span></strong></div>
+</div>
+<ol>
+<li>Dropwizard</li>
+<li>Sprint boot</li>
+<li>Logging
+<ol>
+<li>Loggly</li>
+<li>log stash</li>
+<li>splunk</li>
+</ol>
+</li>
+<li>Deployment
+<ol>
+<li>Docker</li>
+<li>Openshift-geard</li>
+<li>Apache - Mesos</li>
+<li>Spotify - Helios</li>
+<li>Netflix - ribbon</li>
+<li>Netflix - eureka</li>
+</ol>
+</li>
+</ol>
+<div><br/></div>
+<div>
+<div><strong><span style="text-decoration: underline;">Useful links:</span></strong></div>
+<div><br clear="none"/></div>
+<div><a shape="rect" href="http://martinfowler.com/articles/microservices.html">http://martinfowler.com/articles/microservices.html</a></div>
+<div><br clear="none"/></div>
+<div><a shape="rect" href="http://sanderhoogendoorn.com/blog/index.php/designing-developing-and-deploying-a-microservices-architecture/">http://sanderhoogendoorn.com/blog/index.php/designing-developing-and-deploying-a-microservices-architecture/</a></div>
+<div><br clear="none"/></div>
+<div><a shape="rect" href="http://www.giorgiosironi.com/2014/09/microservices-are-not-jars.html">http://www.giorgiosironi.com/2014/09/microservices-are-not-jars.html</a></div>
+<div><br clear="none"/></div>
+<div><br clear="none"/></div>
+</div>
+<div><strong><span style="text-decoration: underline;"><br clear="none"/></span></strong></div>
+</section>
+</body></html>
